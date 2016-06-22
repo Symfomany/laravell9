@@ -4,7 +4,6 @@ php:
 sudo: false
 before_script:
   - phpenv config-rm xdebug.ini
-  - cd 
   - composer install --dev --no-interaction --prefer-source
   - ulimit -c
   - ulimit -c unlimited -S
