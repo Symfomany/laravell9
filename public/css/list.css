@@ -3,7 +3,7 @@ th{
   max-width: 225px;
   text-align: justify;
 }
-.img-circle{
+table td .img-circle{
   border-radius: 100%;
   width: 100px;
   height: 100px;
