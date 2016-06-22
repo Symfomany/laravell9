@@ -10,7 +10,15 @@
 @endsection
 @section('content')
   <h1><span class="fa fa-film"></span> Liste de mes films <span class="badge">{{ count($movies) }} films</span></h1>
+
+
   <hr />
+<div class="row">
+  <a href="{{ route('movies.creer') }}" class="pull-right btn btn-success btn-sm">
+    <span class="fa fa-plus"></span> Ajouter un film
+  </a>
+  <hr />
+</div>
 
   <div class="x_panel">
     <div class="x_content">

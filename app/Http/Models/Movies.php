@@ -4,6 +4,7 @@ namespace App\Http\Models;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * Model Movies.
@@ -28,4 +29,27 @@ class Movies extends Model
 
       return $resultat;
   }
+
+  /**
+   * Methode qui enregistre en Base De Données mon film
+   * @return [type] [description]
+   */
+  public static function store(Request $request){
+
+    // insert permet d'insérer dans une table
+    DB::table('movies')->insert(
+      [
+        'title' => $request->titre,
+        'synopsis' => $request->synopsis,
+        'description' => $request->description,
+        'date_release' => $request->date_release,
+        'languages' => $request->languages,
+        'budget' => $request->budget,
+        'bo' => $request->titre,
+        'image' => $request->image,
+      ]
+    );
+
+  }
+
 }

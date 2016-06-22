@@ -30,9 +30,15 @@ Route::group(['prefix' => 'movies', 'as' => 'movies.'], function () {
                 'uses' => 'MoviesController@index',
               ]);
 
-    Route::get('/creer', ['as' => 'creer',  function () {
-        return view('movies/creer');
-    }]);
+    Route::get('/creer', [
+                'as'   => 'creer',
+                'uses' => 'MoviesController@creer',
+              ]);
+
+    Route::post('/store', [
+                'as'   => 'store',
+                'uses' => 'MoviesController@store',
+              ]);
 
     Route::get('/editer', ['as' => 'editer',  function () {
         return view('movies/editer');
