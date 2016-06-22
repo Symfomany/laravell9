@@ -1,0 +1,25 @@
+th{
+  padding: 10px;
+  max-width: 225px;
+  text-align: justify;
+}
+.img-circle{
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  margin-right: 25px;
+}
+table td .btn{
+    padding: 10px;
+    margin: 10px;
+}
+td{
+    max-width: 225px;
+}
+td h4 a{
+  text-decoration: none !important;
+  color: cadetblue;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Tahoma;
+}
