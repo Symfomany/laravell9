@@ -2,14 +2,12 @@
 
 namespace App\Http\Requests;
 
-
 /**
- * Formulaire de Contact
+ * Formulaire de Contact.
  */
 class ContactForm extends Request
 {
-
-      /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -21,7 +19,7 @@ class ContactForm extends Request
         ];
     }
 
-    /**
+  /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
@@ -30,19 +28,4 @@ class ContactForm extends Request
   {
       return true;
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
- ?>
