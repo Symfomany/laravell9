@@ -1,3 +1,10 @@
+
+[![Build Status](https://travis-ci.org/Symfomany/laravell9.svg?branch=master)](https://travis-ci.org/Symfomany/laravell9)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/89235c20-c1db-4c9e-8919-1c127aa5201a/small.png)](https://insight.sensiolabs.com/projects/89235c20-c1db-4c9e-8919-1c127aa5201a)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/89235c20-c1db-4c9e-8919-1c127aa5201a/big.png)](https://insight.sensiolabs.com/projects/89235c20-c1db-4c9e-8919-1c127aa5201a)
+
 ## Pedagogic Project by Laravel 5
 
 Demonstration of Laravel 5 Framework
@@ -37,7 +44,7 @@ Screenshots
 Data Fixtures
 ====
     php artisan db:seed
-    
+
 ## Installing via Composer
 
 * Composer package:   `composer create-project symfomany/laravelcinema`  or just vendor with `composer require symfomany/laravelcinema`

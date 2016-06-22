@@ -14,7 +14,8 @@ class MoviesTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/movies/index')
-             ->see('Liste de mes films');
+             ->see('Liste de mes films')
+             ->see('Le seigneur des anneaux');
     }
 
     /**
