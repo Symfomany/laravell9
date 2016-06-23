@@ -20,6 +20,12 @@
   <hr />
 </div>
 
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
   <div class="x_panel">
     <div class="x_content">
       <table class="table-responsive ">

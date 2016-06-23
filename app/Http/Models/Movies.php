@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Models;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use \DateTime;
 
 /**
  * Model Movies.
@@ -42,7 +42,7 @@ class Movies extends Model
         'title' => $request->titre,
         'synopsis' => $request->synopsis,
         'description' => $request->description,
-        'date_release' => $request->date_release,
+        'date_release' => DateTime::createFromFormat('d/m/Y',$request->date_release),
         'languages' => $request->languages,
         'budget' => $request->budget,
         'bo' => $request->titre,
