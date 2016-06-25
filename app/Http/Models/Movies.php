@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Http\Models;
 
+use DateTime;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use \DateTime;
 
 /**
  * Model Movies.
@@ -31,25 +32,25 @@ class Movies extends Model
   }
 
   /**
-   * Methode qui enregistre en Base De Données mon film
+   * Methode qui enregistre en Base De Données mon film.
+   *
    * @return [type] [description]
    */
-  public static function store(Request $request){
+  public static function store(Request $request)
+  {
 
     // insert permet d'insérer dans une table
     DB::table('movies')->insert(
       [
-        'title' => $request->titre,
-        'synopsis' => $request->synopsis,
-        'description' => $request->description,
-        'date_release' => DateTime::createFromFormat('d/m/Y',$request->date_release),
-        'languages' => $request->languages,
-        'budget' => $request->budget,
-        'bo' => $request->titre,
-        'image' => $request->image,
+        'title'        => $request->titre,
+        'synopsis'     => $request->synopsis,
+        'description'  => $request->description,
+        'date_release' => DateTime::createFromFormat('d/m/Y', $request->date_release),
+        'languages'    => $request->languages,
+        'budget'       => $request->budget,
+        'bo'           => $request->titre,
+        'image'        => $request->image,
       ]
     );
-
   }
-
 }
