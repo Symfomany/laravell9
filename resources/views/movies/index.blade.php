@@ -22,7 +22,8 @@
 
 @if(session('success'))
     <div class="alert alert-success">
-        {{ session('success') }}
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ session('success') }}
     </div>
 @endif
 
@@ -74,11 +75,30 @@
         @foreach($movies as $key => $movie)
         <tr >
 
-            <td><img class="img-responsive img-circle" src="{{ $movie->image }}" alt="" /></td>
+            <td>
+
+              @if(!in_array($movie->id, session('likes', [])))
+
+                <a href="{{ route('movies.like', [
+                    'id' => $movie->id,
+                    'action' => 'like'
+                ]) }}">
+                    <span class="fa fa-heart"></span>
+                </a>
+                @else
+                    <a href="{{ route('movies.like', [
+                    'id' => $movie->id,
+                    'action' => 'dislike'
+                ]) }}">
+                        <span class="fa fa-heart-o"></span>
+                    </a>
+                @endif
+
+              <img class="img-responsive img-circle" src="{{ $movie->image }}" alt="" /></td>
             <td><h4><a>{{ $movie->title }}</a></h4></td>
             <td><b><span class="label label-success">{{ $movie->languages }}</span></b></td>
             <td><b>
-              @if($movie->visible == 1)
+              @if($movie->visible == true)
                 <span class="fa fa-eye"></span>
               @else
                 <span class="fa fa-eye-slash"></span>
@@ -105,11 +125,14 @@
               {!! str_repeat("<span class='fa fa-star'></span>", $movie->note_presse) !!}</i></h5>
             </td>
             <td>
-              <ul class="nav">
                 <li><a href="#" class="btn btn-xs btn-primary"><span class="fa fa-search"></span> Voir</a></li>
                 <li><a href="#" class="btn btn-xs btn-warning"><span class="fa fa-pencil"></span> Editer</a></li>
                 <li><a href="#" class="btn btn-xs btn-danger"><span class="fa fa-times"></span> Suprimmer</a></li>
-              </ul>
+                @if($movie->visible == 1)
+                  <li><a href="{{ route('movies.activation', ['id' => $movie->id, 'action' => 0]) }}" class="btn btn-xs btn-success"><span class="fa fa-times"></span> Inactiver</a></li>
+                @else
+                  <li><a href="{{ route('movies.activation', ['id' => $movie->id, 'action' => 1]) }}" class="btn btn-xs btn-warning"><span class="fa fa-check"></span> Activer</a></li>
+                @endif
             </td>
 
           </tr>

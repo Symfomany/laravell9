@@ -32,6 +32,17 @@ class Movies extends Model
   }
 
   /**
+   *
+   *
+   */
+  public static function activation($id, $action){
+
+    return DB::table('movies')
+          ->where('id', $id)
+          ->update(['visible' => $action]);
+  }
+
+  /**
    * Methode qui enregistre en Base De Données mon film.
    *
    * @return [type] [description]
@@ -40,7 +51,7 @@ class Movies extends Model
   {
 
     // insert permet d'insérer dans une table
-    DB::table('movies')->insert(
+    return DB::table('movies')->insert(
       [
         'title'        => $request->titre,
         'synopsis'     => $request->synopsis,

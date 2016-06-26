@@ -44,6 +44,20 @@ Route::group(['prefix' => 'movies', 'as' => 'movies.'], function () {
         return view('movies/editer');
     }]);
 
+
+    Route::get('/activation/{id}/{action}',[
+                'as'   => 'activation',
+                'uses' => 'MoviesController@activation',
+    ]);
+
+    /*
+     * Action Like
+     */
+    Route::get('/like/{id}/{action}', [
+        'as'   => 'like',
+        'uses' => 'MoviesController@like',
+    ]);
+
     Route::get('/voir', ['as' => 'voir',  function () {
         return view('movies/voir');
     }]);

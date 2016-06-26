@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\Movies;
 use Illuminate\Http\Request;
 use Validator;
-
+use Session;
 /**
  * @class MoviesController
  * Controller for movies pages
@@ -33,6 +33,61 @@ class MoviesController extends Controller
   {
       return view('movies/creer');
   }
+
+  /**
+   * Page creer.
+   *
+   * @return  vue creer
+   */
+  public function activation($id, $action = true)
+  {
+
+      Movies::activation($id, $action);
+      if ($action == true) {
+        $chaine = 'Votre film a bien été activé';
+      }else {
+        $chaine = 'Votre film a bien été inactivé';
+      }
+      return redirect()
+      ->route('movies.index')
+      ->with('success', $chaine);
+  }
+
+
+
+      /**
+       * Fonction de like des films, enregistré en session
+       * Session : mécanisme de stockage temporelle
+       * BDD: mécanisme de stockage atemporelle.
+       *
+       * @param Request $request
+       */
+      public function like($id, $action)
+      {
+          $movie = Movies::find($id);
+          $likes = session('likes', []);
+
+          // si l'action est "like"
+          if ($action == 'like') {
+              // J'ajoute mon movie dans le tableaux des likes en session
+              $likes[$id] = $movie->id;
+              $message = "Le film {$movie->title} a bien été liké";
+          } else {
+              // je supprime le like dans le tableaux des likes
+              // unset() supprimer un element dans un tableau en PHP
+              unset($likes[$id]);
+              $message = "Le film {$movie->title} a bien été disliké";
+          }
+
+          //j'enregistre en session mon nouveau tableaux des likes
+          Session::put('likes', $likes);
+          // une redirection avec message flash
+          return redirect()
+              ->route('movies.index')
+              ->with('success', $message);
+      }
+
+
 
   /**
    * Enregistrer mes données depuis mon formulaire

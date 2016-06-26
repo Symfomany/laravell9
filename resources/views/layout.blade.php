@@ -93,6 +93,8 @@
     <script src="{{ asset('vendors/skycons/skycons.js') }}"></script>
 
     <script src="{{ asset('build/js/custom.min.js') }}"></script>
+    <script src="{{ asset('js/general.js') }}"></script>
+    
     <script src="{{ asset('vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
 
     <script>

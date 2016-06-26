@@ -31,6 +31,36 @@
                       <i class="fa fa-film"></i>
                     </a>
                   </li>
+                  <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">{{ count(session('likes', [])) }}</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+
+                     @forelse(session("likes", []) as $like)
+                        <li>
+                          <a>
+                            <span class="image"><img src="{{ \App\Http\Models\Movies::find($like)->image }}" alt="Profile Image"></span>
+                            <span>
+                              <span>{{ \App\Http\Models\Movies::find($like)->title }}</span>
+                              <span class="time">{{ date('d/m/Y', strtotime($movie->date_release)) }}</span>
+                            </span>
+                            <span class="message">
+                              {{ str_limit(\App\Http\Models\Movies::find($like)->synopsis, 100, '...') }}
+                            </span>
+                          </a>
+                        </li>
+                      @empty
+                        <li>
+                          <div class="alert alert-danger">
+                              <span class="fa fa-warning"></span> Aucun film en panier
+                          </div>
+                        </li>
+                      @endforelse
+
+                  </ul>
+                </li>
                   <li role="presentation">
                     <a class="nfo-number" aria-expanded="false">
                       <i class="fa fa-list"></i>
